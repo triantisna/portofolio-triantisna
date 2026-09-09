@@ -351,7 +351,7 @@
       .hero-name {
         position: absolute;
         inset-inline: 0;
-        top: 60%;
+        top: 70%;
         transform: translateY(-50%);
         display: flex;
         flex-direction: column;
@@ -361,7 +361,8 @@
 
         /* Ukuran Mobile */
         font-size: 7.5rem;
-        line-height: 0.85;
+        line-height: 1;
+        gap: 0.5rem;
       }
 
       /* Bungkusan khusus kata pertama dan kedua */
@@ -369,6 +370,7 @@
         display: flex;
         flex-direction: column; /* Mobile: Tumpuk ke bawah */
         align-items: center;
+        gap: 0.5rem;
       }
 
       /* Tampilan Desktop/Macbook */
@@ -377,6 +379,7 @@
           top: 55%;
           font-size: 15.5rem;
           line-height: 0.78;
+          gap: 0;
         }
         .name-row {
           flex-direction: row; /* Desktop: Jejerkan ke samping */
