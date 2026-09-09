@@ -358,6 +358,17 @@
         align-items: center;
         color: var(--accent);
         z-index: 10;
+        /* Default untuk Mobile */
+        font-size: 13rem;
+        line-height: 0.86;
+      }
+
+      /* Ukuran Besar untuk Layar Desktop/Macbook */
+      @media (min-width: 640px) {
+        .hero-name {
+          font-size: 28rem;
+          line-height: 0.78;
+        }
       }
       .scroll-cue {
         position: absolute;
@@ -674,16 +685,16 @@
         </div>
         <div class="gradient-base"></div>
 
-        <h1 class="font-display mega-text hero-name" id="hero-name">
+        <h1 class="font-display hero-name" id="hero-name">
           <span
             style="display: block; white-space: nowrap"
             class="split-letters"
-            >Trian</span
+            >Trian Tisna</span
           >
           <span
             style="display: block; white-space: nowrap"
             class="split-letters"
-            >Tisna</span
+            >Athalla</span
           >
         </h1>
 
