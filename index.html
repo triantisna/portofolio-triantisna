@@ -28,7 +28,7 @@
         --accent: #ff3b1d;
         --accent-2: #ff6a3d;
         --gutter: 2.5rem;
-        --section: 9rem;
+        --section: 5rem;
       }
 
       /* Adaptive Grid & Reset */
@@ -82,6 +82,7 @@
         }
         :root {
           --gutter: 16px;
+          --section: 3rem;
         }
       }
 
@@ -451,6 +452,11 @@
         .grid-12,
         .grid-2 {
           grid-template-columns: 1fr;
+        }
+        .grid-12 > div,
+        .grid-2 > div {
+          grid-column: 1 / -1 !important;
+          text-align: left !important;
         }
       }
 
@@ -954,7 +960,6 @@
         <ul class="venture-list scroll-trigger">
           <li class="venture-card fade-up" style="transition-delay: 0ms">
             <!-- Wrapper Slider -->
-            <!-- Wrapper Slider -->
             <div
               class="slider-wrapper"
               style="
@@ -978,7 +983,7 @@
                 >
                   <img
                     src="assets/PMS/PMS-S1.png"
-                    style="width: 100%; height: 100%; object-fit: cover"
+                    style="width: 100%; height: 100%; object-fit: contain"
                   />
                 </figure>
                 <!-- Slide 2 -->
@@ -993,7 +998,7 @@
                 >
                   <img
                     src="assets/PMS/PMS-S2.png"
-                    style="width: 100%; height: 100%; object-fit: cover"
+                    style="width: 100%; height: 100%; object-fit: contain"
                   />
                 </figure>
                 <!-- Slide 3 -->
@@ -1008,7 +1013,67 @@
                 >
                   <img
                     src="assets/PMS/PMS-S3.png"
-                    style="width: 100%; height: 100%; object-fit: cover"
+                    style="width: 100%; height: 100%; object-fit: contain"
+                  />
+                </figure>
+                <!-- Slide 4 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface-2);
+                  "
+                >
+                  <img
+                    src="assets/PMS/PMS-S4.png"
+                    style="width: 100%; height: 100%; object-fit: contain"
+                  />
+                </figure>
+                <!-- Slide 5 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface);
+                  "
+                >
+                  <img
+                    src="assets/PMS/PMS-S5.png"
+                    style="width: 100%; height: 100%; object-fit: contain"
+                  />
+                </figure>
+                <!-- Slide 6 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface-2);
+                  "
+                >
+                  <img
+                    src="assets/PMS/PMS-S6.png"
+                    style="width: 100%; height: 100%; object-fit: contain"
+                  />
+                </figure>
+                <!-- Slide 7 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface);
+                  "
+                >
+                  <img
+                    src="assets/PMS/PMS-S7.png"
+                    style="width: 100%; height: 100%; object-fit: contain"
                   />
                 </figure>
               </div>
@@ -1042,7 +1107,8 @@
                   "
                 >
                   Built project dashboards and business workflows for
-                  operational management with role-based access control.
+                  operational management with role-based access control. and
+                  digital approval workflows.
                 </p>
               </div>
               <div style="text-align: right">
@@ -1072,19 +1138,162 @@
             </div>
           </li>
           <li class="venture-card fade-up" style="transition-delay: 120ms">
-            <figure
-              class="liquid-image"
+            <!-- Wrapper Slider -->
+            <div
+              class="slider-wrapper"
               style="
+                position: relative;
                 aspect-ratio: 16/11;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                border-radius: 0.125rem;
+                overflow: hidden;
+                background: var(--surface);
               "
             >
-              <h3 class="h2-text font-display" style="color: var(--muted)">
-                BOOKING
-              </h3>
-            </figure>
+              <div class="slider-container">
+                <!-- Slide 1 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface);
+                  "
+                >
+                  <img
+                    src="assets/BL/BL-S1.png"
+                    style="width: 100%; height: 100%; object-fit: contain"
+                  />
+                </figure>
+                <!-- Slide 2 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface-2);
+                  "
+                >
+                  <img
+                    src="assets/BL/BL-S2.png"
+                    style="width: 100%; height: 100%; object-fit: contain"
+                  />
+                </figure>
+                <!-- Slide 3 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface);
+                  "
+                >
+                  <img
+                    src="assets/BL/BL-S3.png"
+                    style="width: 100%; height: 100%; object-fit: contain"
+                  />
+                </figure>
+                <!-- Slide 4 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface-2);
+                  "
+                >
+                  <img
+                    src="assets/BL/BL-S4.png"
+                    style="width: 100%; height: 100%; object-fit: contain"
+                  />
+                </figure>
+                <!-- Slide 5 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface);
+                  "
+                >
+                  <img
+                    src="assets/BL/BL-S5.png"
+                    style="width: 100%; height: 100%; object-fit: contain"
+                  />
+                </figure>
+                <!-- Slide 6 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface-2);
+                  "
+                >
+                  <img
+                    src="assets/BL/BL-S6.png"
+                    style="width: 100%; height: 100%; object-fit: contain"
+                  />
+                </figure>
+                <!-- Slide 7 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface);
+                  "
+                >
+                  <img
+                    src="assets/BL/BL-S7.png"
+                    style="width: 100%; height: 100%; object-fit: contain"
+                  />
+                </figure>
+                <!-- Slide 8 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface-2);
+                  "
+                >
+                  <img
+                    src="assets/BL/BL-S8.png"
+                    style="width: 100%; height: 100%; object-fit: contain"
+                  />
+                </figure>
+                <!-- Slide 9 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface);
+                  "
+                >
+                  <img
+                    src="assets/BL/BL-S9.png"
+                    style="width: 100%; height: 100%; object-fit: contain"
+                  />
+                </figure>
+              </div>
+
+              <!-- Tombol Navigasi -->
+              <button class="slider-btn prev-btn">❮</button>
+              <button class="slider-btn next-btn">❯</button>
+
+              <!-- Tempat Titik Indikator -->
+              <div class="slider-dots"></div>
+            </div>
             <div
               style="
                 margin-top: 1.5rem;
@@ -1135,19 +1344,72 @@
             </div>
           </li>
           <li class="venture-card fade-up" style="transition-delay: 0ms">
-            <figure
-              class="liquid-image"
+            <!-- Wrapper Slider -->
+            <div
+              class="slider-wrapper"
               style="
+                position: relative;
                 aspect-ratio: 16/11;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                border-radius: 0.125rem;
+                overflow: hidden;
+                background: var(--surface);
               "
             >
-              <h3 class="h2-text font-display" style="color: var(--muted)">
-                AI APP
-              </h3>
-            </figure>
+              <div class="slider-container">
+                <!-- Slide 1 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface);
+                  "
+                >
+                  <img
+                    src="assets/AI/AI-S1.jpeg"
+                    style="width: 100%; height: 100%; object-fit: contain"
+                  />
+                </figure>
+                <!-- Slide 2 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface-2);
+                  "
+                >
+                  <img
+                    src="assets/AI/AI-S2.jpeg"
+                    style="width: 100%; height: 100%; object-fit: contain"
+                  />
+                </figure>
+                <!-- Slide 3 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface);
+                  "
+                >
+                  <img
+                    src="assets/AI/AI-S3.jpeg"
+                    style="width: 100%; height: 100%; object-fit: contain"
+                  />
+                </figure>
+              </div>
+
+              <!-- Tombol Navigasi -->
+              <button class="slider-btn prev-btn">❮</button>
+              <button class="slider-btn next-btn">❯</button>
+
+              <!-- Tempat Titik Indikator -->
+              <div class="slider-dots"></div>
+            </div>
             <div
               style="
                 margin-top: 1.5rem;
@@ -1198,19 +1460,116 @@
             </div>
           </li>
           <li class="venture-card fade-up" style="transition-delay: 120ms">
-            <figure
-              class="liquid-image"
+            <div
+              class="slider-wrapper"
               style="
+                position: relative;
                 aspect-ratio: 16/11;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                border-radius: 0.125rem;
+                overflow: hidden;
+                background: var(--surface);
               "
             >
-              <h3 class="h2-text font-display" style="color: var(--muted)">
-                TRUELOVE
-              </h3>
-            </figure>
+              <div class="slider-container">
+                <!-- Slide 1 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface);
+                  "
+                >
+                  <img
+                    src="assets/TL/TL-S1.png"
+                    style="width: 100%; height: 100%; object-fit: contain"
+                  />
+                </figure>
+                <!-- Slide 2 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface-2);
+                  "
+                >
+                  <img
+                    src="assets/TL/TL-S2.png"
+                    style="width: 100%; height: 100%; object-fit: contain"
+                  />
+                </figure>
+                <!-- Slide 3 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface);
+                  "
+                >
+                  <img
+                    src="assets/TL/TL-S3.png"
+                    style="width: 100%; height: 100%; object-fit: contain"
+                  />
+                </figure>
+                <!-- Slide 4 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface-2);
+                  "
+                >
+                  <img
+                    src="assets/TL/TL-S4.png"
+                    style="width: 100%; height: 100%; object-fit: contain"
+                  />
+                </figure>
+                <!-- Slide 5 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface);
+                  "
+                >
+                  <img
+                    src="assets/TL/TL-S5.png"
+                    style="width: 100%; height: 100%; object-fit: contain"
+                  />
+                </figure>
+                <!-- Slide 6 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface-2);
+                  "
+                >
+                  <img
+                    src="assets/TL/TL-S6.png"
+                    style="width: 100%; height: 100%; object-fit: contain"
+                  />
+                </figure>
+              </div>
+
+              <!-- Tombol Navigasi -->
+              <button class="slider-btn prev-btn">❮</button>
+              <button class="slider-btn next-btn">❯</button>
+
+              <!-- Tempat Titik Indikator -->
+              <div class="slider-dots"></div>
+            </div>
             <div
               style="
                 margin-top: 1.5rem;
@@ -1456,7 +1815,7 @@
         </p>
 
         <a
-          href="mailto:triantisna!7@gmail.com"
+          href="mailto:triantisna17@gmail.com"
           class="h3-text font-sans"
           style="
             display: inline-flex;
@@ -1469,7 +1828,7 @@
               transform 0.34s ease-out;
           "
         >
-          triantisna!7@gmail.com <span style="color: var(--accent)">↗</span>
+          triantisna17@gmail.com <span style="color: var(--accent)">↗</span>
         </a>
 
         <div
@@ -1498,7 +1857,7 @@
             <ul style="display: flex; flex-direction: column; gap: 0.5rem">
               <li>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/trian-tisna-athalla-4a990a432"
                   target="_blank"
                   class="body-text"
                   style="color: var(--muted); transition: 0.3s"
@@ -1507,7 +1866,7 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://github.com/triantisna"
                   target="_blank"
                   class="body-text"
                   style="color: var(--muted); transition: 0.3s"
@@ -1516,7 +1875,7 @@
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://github.com/triantisna/portofolio-triantisna"
                   target="_blank"
                   class="body-text"
                   style="color: var(--muted); transition: 0.3s"
