@@ -352,24 +352,26 @@
         position: absolute;
         inset-inline: 0;
         bottom: 0;
-        transform: translateY(6%);
+        transform: translateY(2%);
         display: flex;
         flex-direction: column;
         align-items: center;
         color: var(--accent);
         z-index: 10;
-        /* Default untuk Mobile */
-        font-size: 13rem;
+
+        /* Ukuran Mobile: disesuaikan untuk nama panjang */
+        font-size: 6.5rem;
         line-height: 0.86;
       }
 
-      /* Ukuran Besar untuk Layar Desktop/Macbook */
+      /* Ukuran Desktop/Macbook: disesuaikan untuk nama panjang */
       @media (min-width: 640px) {
         .hero-name {
-          font-size: 28rem;
+          font-size: 13.5rem;
           line-height: 0.78;
         }
       }
+
       .scroll-cue {
         position: absolute;
         bottom: 2rem;
