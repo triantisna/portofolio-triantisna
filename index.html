@@ -614,6 +614,57 @@
       .liquid-bare {
         background: transparent;
       }
+
+      /* Image Slider Styles */
+      .slider-container {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        height: 100%;
+        width: 100%;
+        scrollbar-width: none; /* Sembunyikan scrollbar di Firefox */
+        -ms-overflow-style: none; /* Sembunyikan scrollbar di IE/Edge */
+      }
+      .slider-container::-webkit-scrollbar {
+        display: none; /* Sembunyikan scrollbar di Chrome/Safari */
+      }
+      .slider-item {
+        flex: 0 0 100%; /* Memaksa setiap slide mengambil 100% lebar kontainer */
+        height: 100%;
+        scroll-snap-align: center; /* Membuat slide selalu pas di tengah saat scroll berhenti */
+        position: relative;
+      }
+
+      /* Tombol Navigasi Slider */
+      .slider-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(8, 8, 10, 0.6);
+        color: var(--foreground);
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition:
+          background 0.3s,
+          color 0.3s;
+        border: 1px solid var(--line-strong);
+        z-index: 10;
+      }
+      .slider-btn:hover {
+        background: var(--accent);
+        color: var(--background);
+      }
+      .prev-btn {
+        left: 0.5rem;
+      }
+      .next-btn {
+        right: 0.5rem;
+      }
     </style>
 
     <!-- Import Maps for Lenis -->
@@ -1587,6 +1638,31 @@
           turb.setAttribute("baseFrequency", "0.009");
           disp.setAttribute("scale", "1");
         });
+      });
+
+      // Logika Fungsi Image Slider
+      document.querySelectorAll(".slider-wrapper").forEach((wrapper) => {
+        const container = wrapper.querySelector(".slider-container");
+        const prevBtn = wrapper.querySelector(".prev-btn");
+        const nextBtn = wrapper.querySelector(".next-btn");
+
+        if (prevBtn && nextBtn) {
+          prevBtn.addEventListener("click", () => {
+            // Geser ke kiri sebesar lebar 1 gambar
+            container.scrollBy({
+              left: -container.clientWidth,
+              behavior: "smooth",
+            });
+          });
+
+          nextBtn.addEventListener("click", () => {
+            // Geser ke kanan sebesar lebar 1 gambar
+            container.scrollBy({
+              left: container.clientWidth,
+              behavior: "smooth",
+            });
+          });
+        }
       });
     </script>
   </body>
