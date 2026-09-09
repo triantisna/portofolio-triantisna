@@ -877,19 +877,70 @@
 
         <ul class="venture-list scroll-trigger">
           <li class="venture-card fade-up" style="transition-delay: 0ms">
-            <figure
-              class="liquid-image"
+            <!-- Wrapper Slider -->
+            <div
+              class="slider-wrapper"
               style="
+                position: relative;
                 aspect-ratio: 16/11;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                border-radius: 0.125rem;
+                overflow: hidden;
+                background: var(--surface);
               "
             >
-              <h3 class="h2-text font-display" style="color: var(--muted)">
-                PMS
-              </h3>
-            </figure>
+              <!-- Kontainer Scroll -->
+              <div class="slider-container">
+                <!-- Slide 1 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface);
+                  "
+                >
+                  <h3 class="h2-text font-display" style="color: var(--muted)">
+                    PMS 1
+                  </h3>
+                  <!-- Nanti ganti dengan tag img Anda: <img src="./assets/pms1.jpg" style="filter:url(#liquid-filter);" /> -->
+                </figure>
+
+                <!-- Slide 2 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface-2);
+                  "
+                >
+                  <h3 class="h2-text font-display" style="color: var(--muted)">
+                    PMS 2
+                  </h3>
+                </figure>
+
+                <!-- Slide 3 -->
+                <figure
+                  class="slider-item liquid-image"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: var(--surface);
+                  "
+                >
+                  <h3 class="h2-text font-display" style="color: var(--muted)">
+                    PMS 3
+                  </h3>
+                </figure>
+              </div>
+
+              <!-- Tombol Navigasi -->
+              <button class="slider-btn prev-btn">❮</button>
+              <button class="slider-btn next-btn">❯</button>
+            </div>
             <div
               style="
                 margin-top: 1.5rem;
