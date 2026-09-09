@@ -665,6 +665,31 @@
       .next-btn {
         right: 0.5rem;
       }
+
+      /* Dots Pagination */
+      .slider-dots {
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 0.5rem;
+        z-index: 10;
+      }
+      .slider-dot {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background: rgba(243, 241, 234, 0.3); /* Warna redup */
+        cursor: pointer;
+        transition:
+          background 0.3s,
+          transform 0.3s;
+      }
+      .slider-dot.active {
+        background: var(--accent); /* Warna merah aksen */
+        transform: scale(1.3);
+      }
     </style>
 
     <!-- Import Maps for Lenis -->
@@ -929,6 +954,7 @@
         <ul class="venture-list scroll-trigger">
           <li class="venture-card fade-up" style="transition-delay: 0ms">
             <!-- Wrapper Slider -->
+            <!-- Wrapper Slider -->
             <div
               class="slider-wrapper"
               style="
@@ -939,7 +965,6 @@
                 background: var(--surface);
               "
             >
-              <!-- Kontainer Scroll -->
               <div class="slider-container">
                 <!-- Slide 1 -->
                 <figure
@@ -954,9 +979,7 @@
                   <h3 class="h2-text font-display" style="color: var(--muted)">
                     PMS 1
                   </h3>
-                  <!-- Nanti ganti dengan tag img Anda: <img src="./assets/pms1.jpg" style="filter:url(#liquid-filter);" /> -->
                 </figure>
-
                 <!-- Slide 2 -->
                 <figure
                   class="slider-item liquid-image"
@@ -971,7 +994,6 @@
                     PMS 2
                   </h3>
                 </figure>
-
                 <!-- Slide 3 -->
                 <figure
                   class="slider-item liquid-image"
@@ -991,6 +1013,9 @@
               <!-- Tombol Navigasi -->
               <button class="slider-btn prev-btn">❮</button>
               <button class="slider-btn next-btn">❯</button>
+
+              <!-- Tempat Titik Indikator -->
+              <div class="slider-dots"></div>
             </div>
             <div
               style="
@@ -1640,29 +1665,72 @@
         });
       });
 
-      // Logika Fungsi Image Slider
+      // Logika Fungsi Image Slider dengan Looping & Titik
       document.querySelectorAll(".slider-wrapper").forEach((wrapper) => {
         const container = wrapper.querySelector(".slider-container");
+        const slides = container.querySelectorAll(".slider-item");
         const prevBtn = wrapper.querySelector(".prev-btn");
         const nextBtn = wrapper.querySelector(".next-btn");
+        const dotsContainer = wrapper.querySelector(".slider-dots");
+
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+
+        // Buat titik secara dinamis berdasarkan jumlah slide
+        slides.forEach((_, index) => {
+          const dot = document.createElement("div");
+          dot.classList.add("slider-dot");
+          if (index === 0) dot.classList.add("active");
+          // Buat titik bisa diklik untuk loncat ke gambar tertentu
+          dot.addEventListener("click", () => goToSlide(index));
+          dotsContainer.appendChild(dot);
+        });
+
+        const dots = dotsContainer.querySelectorAll(".slider-dot");
+
+        // Fungsi perbarui warna titik
+        function updateDots(index) {
+          dots.forEach((dot) => dot.classList.remove("active"));
+          if (dots[index]) dots[index].classList.add("active");
+        }
+
+        // Fungsi geser ke slide tertentu
+        function goToSlide(index) {
+          container.scrollTo({
+            left: container.clientWidth * index,
+            behavior: "smooth",
+          });
+          currentIndex = index;
+          updateDots(currentIndex);
+        }
 
         if (prevBtn && nextBtn) {
+          // Tombol Kiri: Jika di awal, lompat ke akhir. Jika tidak, geser kiri.
           prevBtn.addEventListener("click", () => {
-            // Geser ke kiri sebesar lebar 1 gambar
-            container.scrollBy({
-              left: -container.clientWidth,
-              behavior: "smooth",
-            });
+            currentIndex =
+              currentIndex === 0 ? totalSlides - 1 : currentIndex - 1;
+            goToSlide(currentIndex);
           });
 
+          // Tombol Kanan: Jika di akhir, lompat ke awal. Jika tidak, geser kanan.
           nextBtn.addEventListener("click", () => {
-            // Geser ke kanan sebesar lebar 1 gambar
-            container.scrollBy({
-              left: container.clientWidth,
-              behavior: "smooth",
-            });
+            currentIndex =
+              currentIndex === totalSlides - 1 ? 0 : currentIndex + 1;
+            goToSlide(currentIndex);
           });
         }
+
+        // Sinkronisasi titik jika pengguna menggeser pakai tangan (swipe di HP)
+        container.addEventListener("scroll", () => {
+          const scrollPosition = container.scrollLeft;
+          const slideWidth = container.clientWidth;
+          const newIndex = Math.round(scrollPosition / slideWidth);
+
+          if (newIndex !== currentIndex) {
+            currentIndex = newIndex;
+            updateDots(currentIndex);
+          }
+        });
       });
     </script>
   </body>
