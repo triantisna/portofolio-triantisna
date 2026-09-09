@@ -351,25 +351,36 @@
       .hero-name {
         position: absolute;
         inset-inline: 0;
-        top: 55%;
+        top: 60%;
         transform: translateY(-50%);
-
         display: flex;
         flex-direction: column;
         align-items: center;
         color: var(--accent);
         z-index: 10;
 
-        /* Default untuk Mobile */
-        font-size: 6.5rem;
-        line-height: 0.86;
+        /* Ukuran Mobile */
+        font-size: 7.5rem;
+        line-height: 0.85;
       }
 
-      /* Ukuran Desktop/Macbook */
+      /* Bungkusan khusus kata pertama dan kedua */
+      .name-row {
+        display: flex;
+        flex-direction: column; /* Mobile: Tumpuk ke bawah */
+        align-items: center;
+      }
+
+      /* Tampilan Desktop/Macbook */
       @media (min-width: 640px) {
         .hero-name {
-          font-size: 14rem;
+          top: 55%;
+          font-size: 15.5rem;
           line-height: 0.78;
+        }
+        .name-row {
+          flex-direction: row; /* Desktop: Jejerkan ke samping */
+          gap: 3.5rem; /* Spasi pemisah antara Trian dan Tisna */
         }
       }
 
@@ -689,11 +700,18 @@
         <div class="gradient-base"></div>
 
         <h1 class="font-display hero-name" id="hero-name">
-          <span
-            style="display: block; white-space: nowrap"
-            class="split-letters"
-            >Trian Tisna</span
-          >
+          <div class="name-row">
+            <span
+              style="display: block; white-space: nowrap"
+              class="split-letters"
+              >Trian</span
+            >
+            <span
+              style="display: block; white-space: nowrap"
+              class="split-letters"
+              >Tisna</span
+            >
+          </div>
           <span
             style="display: block; white-space: nowrap"
             class="split-letters"
