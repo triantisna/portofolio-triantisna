@@ -1,0 +1,1375 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marcus Vane — Founder, Investor, Operator</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Onest:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* CSS Variables & Tokens */
+      :root {
+        --font-display: "Anton", sans-serif;
+        --font-sans: "Onest", sans-serif;
+        --background: #08080a;
+        --foreground: #f3f1ea;
+        --surface: #111114;
+        --surface-2: #17171b;
+        --muted: #807f78;
+        --line: rgba(243, 241, 234, 0.1);
+        --line-strong: rgba(243, 241, 234, 0.22);
+        --accent: #ff3b1d;
+        --accent-2: #ff6a3d;
+        --gutter: 2.5rem;
+        --section: 9rem;
+      }
+
+      /* Adaptive Grid & Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      img,
+      video {
+        display: block;
+        max-width: 100%;
+      }
+      ul {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: inherit;
+        font: inherit;
+      }
+
+      html {
+        font-size: 16px;
+        background: var(--background);
+      }
+      @media (max-width: 1920px) {
+        html {
+          font-size: 0.833333vw;
+        }
+      }
+      @media (max-width: 1440px) {
+        html {
+          font-size: 1.111111vw;
+        }
+      }
+      @media (max-width: 1024px) {
+        html {
+          font-size: 1.5625vw;
+        }
+      }
+      @media (max-width: 640px) {
+        html {
+          font-size: 4.444444vw;
+        }
+        :root {
+          --gutter: 16px;
+        }
+      }
+
+      body {
+        background: var(--background);
+        color: var(--foreground);
+        font-family: var(--font-sans);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        overflow-x: hidden;
+      }
+
+      ::selection {
+        background: var(--accent);
+        color: var(--background);
+      }
+
+      /* Typography Scale */
+      .hero-text {
+        font-size: 28rem;
+        line-height: 0.78;
+      }
+      .mega-text {
+        font-size: 13rem;
+        line-height: 0.86;
+      }
+      .display-text {
+        font-size: 7.5rem;
+        line-height: 0.9;
+      }
+      .h1-text {
+        font-size: 5rem;
+        line-height: 0.95;
+      }
+      .h2-text {
+        font-size: 3.25rem;
+        line-height: 1;
+      }
+      .h3-text {
+        font-size: 1.75rem;
+        line-height: 1.15;
+      }
+      .lead-text {
+        font-size: 1.375rem;
+        line-height: 1.45;
+      }
+      .body-text {
+        font-size: 1.0625rem;
+        line-height: 1.6;
+      }
+      .eyebrow-text {
+        font-size: 0.8125rem;
+        line-height: 1.2;
+      }
+
+      .font-display {
+        font-family: var(--font-display);
+        text-transform: uppercase;
+        letter-spacing: -0.01em;
+      }
+      .eyebrow-style {
+        font-family: var(--font-sans);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: var(--muted);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .eyebrow-style::before {
+        content: "";
+        display: block;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+        background: var(--accent);
+      }
+
+      /* Preloader */
+      #preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        background: var(--background);
+        display: flex;
+        padding: var(--gutter);
+        transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      #preloader.wiped {
+        transform: translateY(-100%);
+        pointer-events: none;
+      }
+      .preloader-content {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 1rem;
+        transition: opacity 0.3s ease;
+      }
+      @media (max-width: 640px) {
+        .preloader-content {
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-end;
+          gap: 0.75rem;
+        }
+      }
+
+      /* Navigation */
+      header {
+        position: fixed;
+        inset-inline: 0;
+        top: 0;
+        z-index: 50;
+        pointer-events: none;
+      }
+      nav {
+        pointer-events: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem var(--gutter);
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .monogram {
+        display: grid;
+        place-items: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 9999px;
+        border: 1px solid var(--line-strong);
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+      .nav-links {
+        display: flex;
+        gap: 2.5rem;
+      }
+      .nav-links a {
+        position: relative;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--muted);
+        transition: color 0.3s;
+      }
+      .nav-links a:hover {
+        color: var(--foreground);
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -0.25rem;
+        left: 0;
+        height: 1px;
+        background: var(--accent);
+        width: 0;
+        transition: width 0.3s ease;
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+      .burger {
+        display: none;
+        width: 2.5rem;
+        height: 2.5rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0.375rem;
+      }
+      .burger span {
+        display: block;
+        height: 0.125rem;
+        width: 1.5rem;
+        background: var(--foreground);
+        transition: 0.3s;
+      }
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+        .burger {
+          display: flex;
+        }
+      }
+
+      /* Main Container */
+      main {
+        position: relative;
+        width: 100%;
+        overflow-x: hidden;
+      }
+      section {
+        padding: var(--section) var(--gutter);
+      }
+
+      /* Hero Section */
+      #top {
+        padding: 0;
+        min-height: 100svh;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+      .hero-top-row {
+        z-index: 30;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 7rem var(--gutter) 0;
+      }
+      @media (max-width: 640px) {
+        .hero-top-row {
+          flex-direction: column;
+          gap: 2rem;
+        }
+      }
+      .hero-desc {
+        max-width: 26rem;
+        color: var(--muted);
+        text-align: right;
+      }
+      @media (max-width: 640px) {
+        .hero-desc {
+          text-align: left;
+        }
+      }
+
+      .hero-portrait {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 86vh;
+        width: 36vw;
+        z-index: 20;
+      }
+      @media (max-width: 1024px) {
+        .hero-portrait {
+          width: 48vw;
+        }
+      }
+      @media (max-width: 640px) {
+        .hero-portrait {
+          width: 80vw;
+        }
+      }
+      .gradient-base {
+        position: absolute;
+        inset-inline: 0;
+        bottom: 0;
+        z-index: 20;
+        height: 26vh;
+        background: linear-gradient(to bottom, transparent, #08080a);
+      }
+
+      .hero-name {
+        position: absolute;
+        inset-inline: 0;
+        bottom: 0;
+        transform: translateY(6%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--accent);
+        z-index: 10;
+      }
+      .scroll-cue {
+        position: absolute;
+        bottom: 2rem;
+        left: var(--gutter);
+        z-index: 30;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .scroll-cue::before {
+        content: "";
+        display: block;
+        width: 2.5rem;
+        height: 1px;
+        background: var(--accent);
+      }
+
+      /* Marquee */
+      .marquee-sec {
+        overflow: hidden;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        padding: 2rem 0;
+      }
+      .marquee-track {
+        display: flex;
+        width: max-content;
+        animation: marquee 22s linear infinite;
+      }
+      .marquee-item {
+        display: flex;
+        align-items: center;
+      }
+      .marquee-item span {
+        margin-inline: 2rem;
+        width: 0.625rem;
+        height: 0.625rem;
+        border-radius: 9999px;
+        background: var(--accent);
+      }
+      @keyframes marquee {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* Grids & Cards */
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--gutter);
+      }
+      .grid-12 {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: var(--gutter);
+      }
+      @media (max-width: 1024px) {
+        .grid-12,
+        .grid-2 {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .story-list li {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 1.5rem;
+        border-top: 1px solid var(--line);
+        padding: 2rem 0;
+      }
+      .story-list li:last-child {
+        border-bottom: 1px solid var(--line);
+      }
+      .story-num {
+        color: var(--accent);
+      }
+
+      .venture-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--gutter);
+        row-gap: 4rem;
+        margin-top: 4rem;
+      }
+      @media (max-width: 768px) {
+        .venture-list {
+          grid-template-columns: 1fr;
+        }
+      }
+      .venture-card:nth-child(even) {
+        margin-top: 6rem;
+      }
+      @media (max-width: 768px) {
+        .venture-card:nth-child(even) {
+          margin-top: 0;
+        }
+      }
+
+      .impact-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 1px solid var(--line);
+        margin-top: 4rem;
+      }
+      @media (max-width: 1024px) {
+        .impact-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 640px) {
+        .impact-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .impact-cell {
+        padding: 3rem 0;
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      @media (min-width: 1024px) {
+        .impact-cell:not(:first-child) {
+          border-left: 1px solid var(--line);
+          padding-left: 2rem;
+        }
+      }
+      .impact-val {
+        transition: color 0.34s ease-out;
+      }
+      .impact-cell:hover .impact-val {
+        color: var(--accent);
+      }
+
+      .voice-btn {
+        width: 100%;
+        display: flex;
+        align-items: baseline;
+        gap: 1.25rem;
+        border-top: 1px solid var(--line);
+        padding: 1.75rem 0;
+        text-align: left;
+        transition: 0.3s;
+      }
+      .voice-btn.active .voice-idx {
+        color: var(--accent);
+      }
+      .voice-btn.active .voice-name {
+        color: var(--foreground);
+      }
+      .voice-btn .voice-idx,
+      .voice-btn .voice-name {
+        color: var(--muted);
+      }
+      .voice-btn::after {
+        content: "";
+        flex-shrink: 0;
+        height: 1px;
+        background: var(--accent);
+        width: 0;
+        transition: width 0.3s;
+      }
+      .voice-btn.active::after {
+        width: 2.5rem;
+      }
+
+      /* Text Reveal Animations */
+      .reveal-wrap {
+        overflow: hidden;
+        display: block;
+      }
+      .reveal-inner {
+        display: block;
+        transform: translateY(110%);
+        opacity: 0;
+        transition:
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .in-view .reveal-inner {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      /* Fade + Slide Up */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(40px);
+        transition:
+          opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .in-view.fade-up,
+      .in-view .fade-up {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Liquid Image Filter Base */
+      .liquid-image {
+        position: relative;
+        overflow: hidden;
+        background: var(--surface);
+        border-radius: 0.125rem;
+      }
+      .liquid-image img,
+      .liquid-image video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .liquid-bare {
+        background: transparent;
+      }
+    </style>
+
+    <!-- Import Maps for Lenis -->
+    <script type="importmap">
+      {
+        "imports": {
+          "lenis": "https://cdn.jsdelivr.net/npm/lenis@1.3.19/dist/lenis.mjs"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <!-- SVG Filter Defs -->
+    <svg width="0" height="0" style="position: absolute">
+      <defs>
+        <filter id="liquid-filter">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.009"
+            numOctaves="2"
+            result="noise"
+            id="turb"
+          />
+          <feDisplacementMap
+            in="SourceGraphic"
+            in2="noise"
+            scale="1"
+            id="disp"
+          />
+        </filter>
+      </defs>
+    </svg>
+
+    <div id="preloader">
+      <div class="preloader-content" id="pre-content">
+        <div class="font-display h3-text">Marcus Vane</div>
+        <div class="font-display display-text">
+          <span id="counter">0</span><span style="color: var(--accent)">%</span>
+        </div>
+      </div>
+    </div>
+
+    <header id="nav">
+      <nav>
+        <a href="#top" class="logo">
+          <div class="monogram">MV</div>
+          <div class="eyebrow-text eyebrow-style" style="color: var(--muted)">
+            Marcus Vane
+          </div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#story">Story</a></li>
+          <li><a href="#ventures">Ventures</a></li>
+          <li><a href="#impact">Impact</a></li>
+          <li><a href="#voices">Voices</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="burger"><span></span><span></span><span></span></button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="top">
+        <div class="hero-top-row">
+          <h2 class="font-display h3-text split-lines" id="hero-roles">
+            Founder<br />Investor<br />Operator<br />Contrarian
+          </h2>
+          <p
+            class="body-text hero-desc fade-up"
+            id="hero-desc"
+            style="transition-delay: 2.9s"
+          >
+            I start companies that shouldn't be possible — then make them
+            inevitable. Four exits, one playbook: conviction before consensus.
+          </p>
+        </div>
+
+        <div class="hero-portrait liquid-image liquid-bare">
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+            poster="https://api.getlayers.ai/storage/v1/object/public/public/assets/marcus-vane-6799bd1fb6/hero/portrait.webp"
+            style="filter: url(#liquid-filter)"
+          ></video>
+        </div>
+        <div class="gradient-base"></div>
+
+        <h1 class="font-display mega-text hero-name" id="hero-name">
+          <span
+            style="display: block; white-space: nowrap"
+            class="split-letters"
+            >Marcus</span
+          >
+          <span
+            style="display: block; white-space: nowrap"
+            class="split-letters"
+            >Vane</span
+          >
+        </h1>
+
+        <div
+          class="scroll-cue fade-up eyebrow-text"
+          id="hero-scroll"
+          style="transition-delay: 3.4s"
+        >
+          Scroll to enter
+        </div>
+      </section>
+
+      <section class="marquee-sec" aria-label="Operating principles">
+        <div class="marquee-track font-display h2-text">
+          <div class="marquee-item">
+            Build Bold<span></span>Scale Relentlessly<span></span>Think In
+            Decades<span></span>Bet On People<span></span>Ship The Future<span
+            ></span>
+          </div>
+          <div class="marquee-item">
+            Build Bold<span></span>Scale Relentlessly<span></span>Think In
+            Decades<span></span>Bet On People<span></span>Ship The Future<span
+            ></span>
+          </div>
+        </div>
+      </section>
+
+      <section id="story">
+        <div class="grid-12">
+          <div style="grid-column: span 6">
+            <div class="eyebrow-style eyebrow-text">The Story</div>
+            <h2
+              class="font-display h2-text split-lines scroll-trigger"
+              style="margin-top: 1.5rem; max-width: 16ch"
+            >
+              Conviction is a competitive advantage.
+            </h2>
+            <p
+              class="lead-text fade-up scroll-trigger"
+              style="margin-top: 2rem; max-width: 46ch; color: var(--muted)"
+            >
+              For twenty years I've backed the version of the future most people
+              couldn't see yet. From a dorm-room prototype to companies serving
+              a hundred million people, the through-line never changed: find the
+              hard problem everyone avoids, assemble the team nobody else could,
+              and out-stubborn the doubt.
+            </p>
+          </div>
+          <div style="grid-column: span 6">
+            <ul class="story-list scroll-trigger">
+              <li class="fade-up" style="transition-delay: 0ms">
+                <div class="story-num h3-text">01</div>
+                <div>
+                  <h3 class="h3-text font-sans">Move before it's obvious</h3>
+                  <p
+                    class="body-text"
+                    style="
+                      margin-top: 0.75rem;
+                      max-width: 44ch;
+                      color: var(--muted);
+                    "
+                  >
+                    The best opportunities look like mistakes right up until
+                    they look inevitable. I commit while the room is still
+                    hesitating.
+                  </p>
+                </div>
+              </li>
+              <li class="fade-up" style="transition-delay: 90ms">
+                <div class="story-num h3-text">02</div>
+                <div>
+                  <h3 class="h3-text font-sans">
+                    Hire founders, not employees
+                  </h3>
+                  <p
+                    class="body-text"
+                    style="
+                      margin-top: 0.75rem;
+                      max-width: 44ch;
+                      color: var(--muted);
+                    "
+                  >
+                    I build teams of people who would start their own thing —
+                    then give them a reason not to. Ownership compounds faster
+                    than talent alone.
+                  </p>
+                </div>
+              </li>
+              <li class="fade-up" style="transition-delay: 180ms">
+                <div class="story-num h3-text">03</div>
+                <div>
+                  <h3 class="h3-text font-sans">Distribution is the product</h3>
+                  <p
+                    class="body-text"
+                    style="
+                      margin-top: 0.75rem;
+                      max-width: 44ch;
+                      color: var(--muted);
+                    "
+                  >
+                    Genius unshipped is a hobby. Every venture is engineered
+                    around how it reaches the people it was built for.
+                  </p>
+                </div>
+              </li>
+              <li class="fade-up" style="transition-delay: 270ms">
+                <div class="story-num h3-text">04</div>
+                <div>
+                  <h3 class="h3-text font-sans">Play the long game loudly</h3>
+                  <p
+                    class="body-text"
+                    style="
+                      margin-top: 0.75rem;
+                      max-width: 44ch;
+                      color: var(--muted);
+                    "
+                  >
+                    Patience and ambition are not opposites. I think in decades
+                    and act with urgency every single day.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="ventures">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 2rem;
+          "
+        >
+          <div>
+            <div class="eyebrow-style eyebrow-text">Selected Ventures</div>
+            <h2
+              class="font-display h2-text split-lines scroll-trigger"
+              style="margin-top: 1.5rem; max-width: 14ch"
+            >
+              The work that moved markets.
+            </h2>
+          </div>
+          <div
+            class="eyebrow-text"
+            style="
+              letter-spacing: 0.22em;
+              text-transform: uppercase;
+              color: var(--muted);
+            "
+          >
+            04 / Companies
+          </div>
+        </div>
+
+        <ul class="venture-list scroll-trigger">
+          <li class="venture-card fade-up" style="transition-delay: 0ms">
+            <figure class="liquid-image" style="aspect-ratio: 16/11">
+              <img
+                src="https://api.getlayers.ai/storage/v1/object/public/public/assets/marcus-vane-6799bd1fb6/ventures/venture-01.webp"
+                style="filter: url(#liquid-filter)"
+                alt="Helix Robotics"
+              />
+            </figure>
+            <div
+              style="
+                margin-top: 1.5rem;
+                border-top: 1px solid var(--line);
+                padding-top: 1.25rem;
+                display: flex;
+                justify-content: space-between;
+              "
+            >
+              <div>
+                <h3 class="h3-text font-sans" style="transition: color 0.3s">
+                  Helix Robotics
+                </h3>
+                <p
+                  class="body-text"
+                  style="
+                    margin-top: 0.5rem;
+                    max-width: 42ch;
+                    color: var(--muted);
+                  "
+                >
+                  Reinvented warehouse logistics with autonomous fleets now
+                  running in 40 countries.
+                </p>
+              </div>
+              <div style="text-align: right">
+                <div
+                  class="eyebrow-text"
+                  style="color: var(--muted); letter-spacing: 0.18em"
+                >
+                  2019
+                </div>
+                <div
+                  class="eyebrow-text"
+                  style="
+                    margin-top: 0.5rem;
+                    color: var(--accent);
+                    font-weight: 500;
+                  "
+                >
+                  Acquired — $1.1B
+                </div>
+              </div>
+            </div>
+            <div
+              class="eyebrow-text"
+              style="margin-top: 0.75rem; color: var(--muted)"
+            >
+              Industrial Automation
+            </div>
+          </li>
+          <li class="venture-card fade-up" style="transition-delay: 120ms">
+            <figure class="liquid-image" style="aspect-ratio: 16/11">
+              <img
+                src="https://api.getlayers.ai/storage/v1/object/public/public/assets/marcus-vane-6799bd1fb6/ventures/venture-02.webp"
+                style="filter: url(#liquid-filter)"
+                alt="Northwind Energy"
+              />
+            </figure>
+            <div
+              style="
+                margin-top: 1.5rem;
+                border-top: 1px solid var(--line);
+                padding-top: 1.25rem;
+                display: flex;
+                justify-content: space-between;
+              "
+            >
+              <div>
+                <h3 class="h3-text font-sans">Northwind Energy</h3>
+                <p
+                  class="body-text"
+                  style="
+                    margin-top: 0.5rem;
+                    max-width: 42ch;
+                    color: var(--muted);
+                  "
+                >
+                  Brought utility-scale storage to the grid years before the
+                  market believed it was viable.
+                </p>
+              </div>
+              <div style="text-align: right">
+                <div
+                  class="eyebrow-text"
+                  style="color: var(--muted); letter-spacing: 0.18em"
+                >
+                  2015
+                </div>
+                <div
+                  class="eyebrow-text"
+                  style="
+                    margin-top: 0.5rem;
+                    color: var(--accent);
+                    font-weight: 500;
+                  "
+                >
+                  IPO — NYSE: NWND
+                </div>
+              </div>
+            </div>
+            <div
+              class="eyebrow-text"
+              style="margin-top: 0.75rem; color: var(--muted)"
+            >
+              Climate Infrastructure
+            </div>
+          </li>
+          <li class="venture-card fade-up" style="transition-delay: 0ms">
+            <figure class="liquid-image" style="aspect-ratio: 16/11">
+              <img
+                src="https://api.getlayers.ai/storage/v1/object/public/public/assets/marcus-vane-6799bd1fb6/ventures/venture-03.webp"
+                style="filter: url(#liquid-filter)"
+                alt="Cadence Health"
+              />
+            </figure>
+            <div
+              style="
+                margin-top: 1.5rem;
+                border-top: 1px solid var(--line);
+                padding-top: 1.25rem;
+                display: flex;
+                justify-content: space-between;
+              "
+            >
+              <div>
+                <h3 class="h3-text font-sans">Cadence Health</h3>
+                <p
+                  class="body-text"
+                  style="
+                    margin-top: 0.5rem;
+                    max-width: 42ch;
+                    color: var(--muted);
+                  "
+                >
+                  Put a clinician in every pocket and rewired how chronic care
+                  gets delivered.
+                </p>
+              </div>
+              <div style="text-align: right">
+                <div
+                  class="eyebrow-text"
+                  style="color: var(--muted); letter-spacing: 0.18em"
+                >
+                  2011
+                </div>
+                <div
+                  class="eyebrow-text"
+                  style="
+                    margin-top: 0.5rem;
+                    color: var(--accent);
+                    font-weight: 500;
+                  "
+                >
+                  Acquired — $640M
+                </div>
+              </div>
+            </div>
+            <div
+              class="eyebrow-text"
+              style="margin-top: 0.75rem; color: var(--muted)"
+            >
+              Digital Medicine
+            </div>
+          </li>
+          <li class="venture-card fade-up" style="transition-delay: 120ms">
+            <figure class="liquid-image" style="aspect-ratio: 16/11">
+              <img
+                src="https://api.getlayers.ai/storage/v1/object/public/public/assets/marcus-vane-6799bd1fb6/ventures/venture-04.webp"
+                style="filter: url(#liquid-filter)"
+                alt="Vane Capital"
+              />
+            </figure>
+            <div
+              style="
+                margin-top: 1.5rem;
+                border-top: 1px solid var(--line);
+                padding-top: 1.25rem;
+                display: flex;
+                justify-content: space-between;
+              "
+            >
+              <div>
+                <h3 class="h3-text font-sans">Vane Capital</h3>
+                <p
+                  class="body-text"
+                  style="
+                    margin-top: 0.5rem;
+                    max-width: 42ch;
+                    color: var(--muted);
+                  "
+                >
+                  Backing the next generation of contrarian founders building
+                  hard, durable companies.
+                </p>
+              </div>
+              <div style="text-align: right">
+                <div
+                  class="eyebrow-text"
+                  style="color: var(--muted); letter-spacing: 0.18em"
+                >
+                  2008
+                </div>
+                <div
+                  class="eyebrow-text"
+                  style="
+                    margin-top: 0.5rem;
+                    color: var(--accent);
+                    font-weight: 500;
+                  "
+                >
+                  Active — $900M AUM
+                </div>
+              </div>
+            </div>
+            <div
+              class="eyebrow-text"
+              style="margin-top: 0.75rem; color: var(--muted)"
+            >
+              Venture Investing
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="impact">
+        <div class="eyebrow-style eyebrow-text">By The Numbers</div>
+        <h2
+          class="font-display h2-text split-lines scroll-trigger"
+          style="margin-top: 1.5rem"
+        >
+          Two decades, measured.
+        </h2>
+
+        <dl class="impact-grid scroll-trigger">
+          <div class="impact-cell fade-up" style="transition-delay: 0ms">
+            <dd class="font-display display-text impact-val">4</dd>
+            <dt
+              class="body-text"
+              style="
+                color: var(--muted);
+                text-transform: uppercase;
+                letter-spacing: 0.14em;
+              "
+            >
+              Companies founded & exited
+            </dt>
+          </div>
+          <div class="impact-cell fade-up" style="transition-delay: 110ms">
+            <dd class="font-display display-text impact-val">$3.2B</dd>
+            <dt
+              class="body-text"
+              style="
+                color: var(--muted);
+                text-transform: uppercase;
+                letter-spacing: 0.14em;
+              "
+            >
+              Enterprise value created
+            </dt>
+          </div>
+          <div class="impact-cell fade-up" style="transition-delay: 220ms">
+            <dd class="font-display display-text impact-val">120M+</dd>
+            <dt
+              class="body-text"
+              style="
+                color: var(--muted);
+                text-transform: uppercase;
+                letter-spacing: 0.14em;
+              "
+            >
+              People served by his products
+            </dt>
+          </div>
+          <div class="impact-cell fade-up" style="transition-delay: 330ms">
+            <dd class="font-display display-text impact-val">2,400</dd>
+            <dt
+              class="body-text"
+              style="
+                color: var(--muted);
+                text-transform: uppercase;
+                letter-spacing: 0.14em;
+              "
+            >
+              Jobs created across ventures
+            </dt>
+          </div>
+        </dl>
+      </section>
+
+      <footer
+        id="contact"
+        style="
+          padding-top: var(--section);
+          padding-inline: var(--gutter);
+          margin-bottom: 2rem;
+        "
+      >
+        <div class="eyebrow-style eyebrow-text">Let's Build</div>
+        <h2
+          class="font-display h1-text split-lines scroll-trigger"
+          style="margin-top: 1.5rem; max-width: 18ch"
+        >
+          Have something the world says can't be done?
+        </h2>
+        <p
+          class="lead-text fade-up scroll-trigger"
+          style="margin-top: 2rem; max-width: 44ch; color: var(--muted)"
+        >
+          That's usually where I start. I read every message I'm sent.
+        </p>
+
+        <a
+          href="mailto:hello@marcusvane.com"
+          class="h3-text font-sans"
+          style="
+            display: inline-flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-top: 3rem;
+            font-weight: 600;
+            transition:
+              color 0.34s,
+              transform 0.34s ease-out;
+          "
+        >
+          hello@marcusvane.com <span style="color: var(--accent)">↗</span>
+        </a>
+
+        <div
+          class="grid-12"
+          style="
+            margin-top: var(--section);
+            border-top: 1px solid var(--line);
+            padding-top: 3rem;
+          "
+        >
+          <div style="grid-column: span 6">
+            <p class="font-display h2-text">Marcus Vane</p>
+            <p
+              class="eyebrow-text"
+              style="
+                margin-top: 1rem;
+                color: var(--muted);
+                letter-spacing: 0.22em;
+                text-transform: uppercase;
+              "
+            >
+              Designed & built with conviction.
+            </p>
+          </div>
+          <div style="grid-column: span 3">
+            <ul style="display: flex; flex-direction: column; gap: 0.5rem">
+              <li>
+                <a
+                  href="https://www.linkedin.com"
+                  target="_blank"
+                  class="body-text"
+                  style="color: var(--muted); transition: 0.3s"
+                  >LinkedIn</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://x.com"
+                  target="_blank"
+                  class="body-text"
+                  style="color: var(--muted); transition: 0.3s"
+                  >X / Twitter</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://substack.com"
+                  target="_blank"
+                  class="body-text"
+                  style="color: var(--muted); transition: 0.3s"
+                  >Substack</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div style="grid-column: span 3; text-align: right">
+            <p
+              class="eyebrow-text"
+              style="
+                color: var(--muted);
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+              "
+            >
+              © 2026 Marcus Vane. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script type="module">
+      import Lenis from "lenis";
+
+      // Adaptive Grid logic
+      const FONT_BASE = 16,
+        BASE_W = 1920,
+        COEF = 0.6666;
+      function applyAdaptiveGrid() {
+        const w = window.innerWidth;
+        const reduction = ((BASE_W - w) / BASE_W) * 100 * COEF;
+        const size = FONT_BASE - (FONT_BASE * reduction) / 100;
+        if (size > FONT_BASE)
+          document.documentElement.style.fontSize = size + "px";
+        else document.documentElement.style.removeProperty("font-size");
+      }
+      applyAdaptiveGrid();
+      window.addEventListener("resize", applyAdaptiveGrid);
+
+      // Lenis Smooth Scroll Setup
+      const lenis = new Lenis({ smoothWheel: true });
+      window.lenis = lenis;
+      function raf(t) {
+        lenis.raf(t);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+      lenis.stop(); // Stop for preloader
+
+      // Text Splitter utility
+      function splitText(selector, type) {
+        document.querySelectorAll(selector).forEach((el) => {
+          const text = el.innerText;
+          el.innerHTML = "";
+          const items = type === "letters" ? text.split("") : text.split("\n");
+          items.forEach((item, i) => {
+            const wrapper = document.createElement("span");
+            wrapper.className = "reveal-wrap";
+            const inner = document.createElement("span");
+            inner.className = "reveal-inner";
+            inner.innerHTML = item === " " ? "&nbsp;" : item;
+            if (type === "letters") {
+              inner.style.transitionDelay = `${i * 52}ms`;
+              inner.style.transitionDuration = "900ms";
+            } else {
+              inner.style.transitionDelay = `${i * 90}ms`;
+              inner.style.transitionDuration = "850ms";
+            }
+            wrapper.appendChild(inner);
+            el.appendChild(wrapper);
+            if (type === "letters" && item === " ")
+              el.appendChild(document.createTextNode(" "));
+          });
+        });
+      }
+
+      splitText(".split-lines", "lines");
+      splitText(".split-letters", "letters");
+
+      // Preloader logic
+      let count = 0;
+      const counterEl = document.getElementById("counter");
+      const interval = setInterval(() => {
+        count += Math.floor(Math.random() * 5) + 1;
+        if (count >= 100) {
+          count = 100;
+          clearInterval(interval);
+          setTimeout(() => {
+            document.getElementById("pre-content").style.opacity = "0";
+            setTimeout(() => {
+              document.getElementById("preloader").classList.add("wiped");
+              lenis.start();
+              // Start Hero Animations
+              setTimeout(() => {
+                document.getElementById("hero-name").classList.add("in-view");
+              }, 100);
+              setTimeout(() => {
+                document.getElementById("hero-roles").classList.add("in-view");
+              }, 300);
+              setTimeout(() => {
+                document.getElementById("hero-desc").classList.add("in-view");
+              }, 500);
+              setTimeout(() => {
+                document.getElementById("hero-scroll").classList.add("in-view");
+              }, 1000);
+            }, 200);
+          }, 300);
+        }
+        counterEl.innerText = count;
+      }, 20); // roughly 2000ms to 100
+
+      // Intersection Observer for scroll animations
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0 },
+      );
+
+      document
+        .querySelectorAll(".scroll-trigger")
+        .forEach((el) => observer.observe(el));
+
+      // Liquid Image Hover Effect (Vanilla JS alternative to SVG animate)
+      const turb = document.getElementById("turb");
+      const disp = document.getElementById("disp");
+
+      document.querySelectorAll(".liquid-image").forEach((el) => {
+        el.addEventListener("mouseenter", () => {
+          if (window.innerWidth > 768) {
+            turb.setAttribute("baseFrequency", "0.022");
+            disp.setAttribute(
+              "scale",
+              el.classList.contains("liquid-bare") ? "30" : "28",
+            );
+          }
+        });
+        el.addEventListener("mouseleave", () => {
+          turb.setAttribute("baseFrequency", "0.009");
+          disp.setAttribute("scale", "1");
+        });
+      });
+    </script>
+  </body>
+</html>
